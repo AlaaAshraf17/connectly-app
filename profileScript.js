@@ -23,9 +23,11 @@
         document.getElementById("user-profile-image").src=user.profile_image
         document.getElementById("name-posts").innerHTML=user.username
 
+    }).finally(()=>{
+      loaderToggle(false)
     })
     }
-    
+
     //show info about current user post
     function getPosts(){
         let id =getCurrentUser()
@@ -78,5 +80,7 @@
             })
             .catch(function (error) {
             console.log(error);
-            })
+            }).finally(()=>{
+      loaderToggle(false)
+    })
     }
