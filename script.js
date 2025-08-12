@@ -2,15 +2,17 @@
     let lastPage=1;
 
 // handel infinte scrolling
-  window.addEventListener("scroll", function(){
-    //return true or false as you reach the end of the page the value is true else it is false
-    const endOfPage = window.innerHeight + window.pageYOffset >= document.body.scrollHeight;
-    if(endOfPage && currentPage<lastPage){
-      currentPage=currentPage+1
-      getPosts(false,currentPage)
+  window.addEventListener("scroll", function () {
+  const threshold = 50; 
+  const scrollPosition = window.innerHeight + window.pageYOffset;
+  const pageHeight = document.documentElement.scrollHeight;
 
-    }
-  });
+  if (scrollPosition + threshold >= pageHeight && currentPage < lastPage) {
+    currentPage++;
+    getPosts(false, currentPage);
+  }
+});
+
   
   
   //login and out for user
